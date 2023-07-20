@@ -1,11 +1,6 @@
-import model.FamilyTreeService;
 import model.familyTree.FamilyTree;
 import model.human.Gender;
 import model.human.Human;
-import model.save.FileHandlerForFamilyTree;
-import model.save.base.FileHandler;
-import view.Console;
-import view.View;
 
 import java.time.LocalDate;
 
@@ -23,7 +18,7 @@ public class Main {
         tree.add(victor);
         tree.add(zoya);
         tree.setWedding(victor.getId(),zoya.getId());
-        
+
         tree.add(ekaterina);
         tree.add(antonina);
 
@@ -32,11 +27,5 @@ public class Main {
         tree.add(grandMother);
 
         System.out.println(tree);
-
-        FamilyTreeService service = new FamilyTreeService(tree);
-        service.setWritable(new FileHandlerForFamilyTree());
-        service.save();
-
-        View view = new Console();
-        view.start();
     }
+}
