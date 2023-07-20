@@ -2,7 +2,7 @@ package model.familyTree;
 
 import java.util.Comparator;
 
-public class FamilyTreeComparatorByDeathDate<T extends TreeNode> implements Comparator<T> {
+public class FamilyTreeComparatorByDeathDate<T extends TreeNode<T>> implements Comparator<T> {
 
     @Override
     public int compare(T o1, T o2) {
