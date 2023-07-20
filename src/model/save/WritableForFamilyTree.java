@@ -1,9 +1,8 @@
 package model.save;
 
-import model.familyTree.FamilyTree;
-import model.human.Human;
+import java.io.IOException;
 
 public interface WritableForFamilyTree {
-    boolean save(FamilyTree<Human> tree);
-    FamilyTree<Human> read();
+    void writeObj(Object object) throws ClassNotFoundException, IOException;
+    Object readObj() throws ClassNotFoundException, IOException;
 }
