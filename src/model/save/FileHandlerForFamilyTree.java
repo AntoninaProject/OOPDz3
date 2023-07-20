@@ -1,28 +1,55 @@
 package model.save;
 
-import model.familyTree.FamilyTree;
-import model.human.Human;
-import model.save.base.FileHandler;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class FileHandlerForFamilyTree implements WritableForFamilyTree{
-    private String filePath = "tree.out";
-    private FileHandler fileHandler;
+    private String filePath;
+    private ObjectInputStream objInStream;
+    private ObjectOutputStream objOutStream;
 
+
+    // конструктор по умолчанию
     public FileHandlerForFamilyTree() {
-        fileHandler = new FileHandler();
+        this.filePath = "tree.out";
+        try {
+            objInStream = new ObjectInputStream(new FileInputStream(filePath));
+            objOutStream = new ObjectOutputStream(new FileOutputStream(filePath));
+        }
+        catch (IOException ioe) {
+            System.out.println("IO exception");
+        }
     }
 
-    public void setFilePath(String filePath) {
+    // конструктор с указанием пути
+    public FileHandlerForFamilyTree(String filePath) {
         this.filePath = filePath;
+        try {
+            objInStream = new ObjectInputStream(new FileInputStream(filePath));
+            objOutStream = new ObjectOutputStream(new FileOutputStream(filePath));
+        }
+        catch (IOException ioe) {
+            System.out.println("IO exception");
+        }
     }
 
     @Override
-    public boolean save(FamilyTree<Human> tree) {
-        return fileHandler.save(tree, filePath);
+    public Object readObj() throws ClassNotFoundException, IOException {
+        Object restoredObj = objInStream.readObject();
+        objInStream.close();
+        return restoredObj;
     }
 
     @Override
-    public FamilyTree<Human> read() {
-        return (FamilyTree<Human>)fileHandler.read(filePath);
+    public void writeObj(Object obj) throws IOException {
+        objOutStream.writeObject(obj);
+        objOutStream.close();
+    }
+
+    public void changeFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }
