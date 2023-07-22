@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import model.familyTree.FamilyTree;
+import model.human.Human;
+
 public class FileHandlerForFamilyTree implements WritableForFamilyTree{
     private String filePath;
     private ObjectInputStream objInStream;
@@ -51,5 +54,11 @@ public class FileHandlerForFamilyTree implements WritableForFamilyTree{
 
     public void changeFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    @Override
+    public FamilyTree<Human> read() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'read'");
     }
 }
