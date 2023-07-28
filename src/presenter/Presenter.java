@@ -21,4 +21,43 @@ public class Presenter {
         String answer = service.getHumanList();
         view.print(answer);
     }
+
+    public void saveTree(String pathName) {
+        view.showResult(core.saveTree(pathName));
+    }
+
+    public void getTreeFullInfo() {
+        Presenter core;
+        view.showResult(core.getTreeFullInfo());
+    }
+
+    public void setCurrentItemById(int id) {
+        String result = core.setCurrentItemById(id);
+        view.showResult(result);
+        view.showResult(core.getCurrentItemFullInfo());
+    }
+
+    public void getCurrentItemFullInfo() {
+        view.showResult(core.getCurrentItemFullInfo());
+    }
+
+    public void setBirthDateToCurrItem(int day, int month, int year) {
+        String result = core.setBirthDateToCurrItem(day, month, year);
+        view.showResult(result);
+    }
+
+    public void setDeathDateToCurrItem(int day, int month, int year) {
+        String result = core.setDeathDateToCurrItem(day, month, year);
+        view.showResult(result);
+    }
+
+    public void setParentToCurrItemById(int id) {
+        String result = core.setParentToCurrItemById(id);
+        view.showResult(result);
+    }
+
+    public void addChildToCurrItemById(int id) {
+        String result = core.addChildToCurrItemById(id);
+        view.showResult(result);
+    }
 }
