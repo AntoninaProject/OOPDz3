@@ -42,4 +42,10 @@ public class Console implements View {
     public void getHumanList(){
         presenter.getHumanList();
     }
+
+    @Override
+    public void showResult(String result) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'showResult'");
+    }
 }
